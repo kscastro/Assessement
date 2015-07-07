@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pizzalangelo</title>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Kaike Castro"/>
+    <meta name="keywords" content="Pizzaria, Pizza, Entrega "/>
+    <meta name="description" content=" A melhor pizza do Rio de janeiro pertinho de você"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/pagamento.css">
+    <script src="js/funcao.js"></script> 
+  </head>
+  <body>
+    <div class="container clearfix">
+      <header class="header">
+          <img src="Imagens/logo.jpg" alt="Logo Pizzalangelo" class="logo">
+          <nav class="menu">
+            <ul>
+              <li><a href="Site.html">O Pizzalangelo</a></li>
+              <li><a href="cardapio.html">Cardapio</a></li>
+              <li><a href="Pagamento.html">Pedido</a></li>
+              <li><a href="contato.html">Contato</a></li>
+            </ul>
+          </nav>
+      </header>
+         
+      <div class="banner">
+        <div class="caixa">
+          <h1>Pedido</h1>
+          <p>Informe os dados do cartão e seu endereço. </p>
+        </div>
+      </div>
+
+      <section class="principal">
+        <form action="enviar.js" method="post" id="pag">
+          <fieldset>
+            <legend id="usuario">Indentificação e Endenreço</legend>
+            <table>
+              <tr>
+                <td><label for="nome">Nome do Cliente:</label><span id="erro_nome"></span></td>
+                <td><input name="nome" id="nome" type="text" size="20" maxlength="20" placeholder="Nome Completo"></td>
+              </tr>              
+              <tr>
+                <td><label for="tel">Telefone:</label><span id="erro_tel"></span> </td>
+                <td><input type="text" name="tel" id="tel" size="20" maxlength="10"  placeholder="Telefone" ></td>
+              </tr>
+              <tr>
+                <td><label for="Rua">Nome da Rua:</label><span id="erro_rua"></span></td>
+                <td><input name="rua" id="rua" type="text" size="20" maxlength="20" placeholder="Rua"></td>
+              <tr>
+              <tr>
+                <td><label for="Rua">Bairro:</label><span id="erro_bairro"></span></td>
+                <td><input name="bairro" id="bairro" type="text" size="15" maxlength="20" placeholder="Bairro"></td>
+              <tr>
+            </table>
+          </fieldset>
+          <fieldset>
+            <legend>Dados do cartão</legend>
+            <label>Digite o Número do Cartão:<span id="erro_cartao"></span></label>
+            <input type="text" name="numeroCartao" id="cartao" placeholder="xxxx xxxx xxxx xxxx" maxlength="12"><br/><br/>
+            <label>Data de validade do cartão<span id="erro_valcartao"></span></label>
+            <input type="text" name="validadecartão" id="valcartao" placeholder="Mes/Ano" maxlength="5"><br/><br/>
+          </fieldset>
+          <fieldset> 
+            <legend>Faça seu pedido</legend>
+            <label>Pizzas salgadas:</label>
+            <select>
+              <option>-</option>
+              <option value="Mussarella">Mussarella</option>
+              <option value="Calabresa">Calabresa</option>
+              <option value="frango">Frango com Catupiry</option>
+              <option value="portuguesa">Portuguesa</option>
+            </select>
+            <input  class="pedido" type="text"  id="pizzasalgada" maxlength="2" placeholder="Digite a quantidade"onKeyUp="pizzasalg()">
+            <input  class="pedido" type="text"  id="valorpizzasalgada" value="R$ 30,00" disabled="disabled">
+            <input  class="pedido" type="text" id="totalpizza" placeholder="R$"></br>
+
+            <label>Pizzas doces:</label>
+            <select name="sabores">
+              <option>-</option>
+              <option value="brigadeiro">Pizza Brigadeiro</option>
+              <option value="chocolate branco">Pizza Chocolate Branco</option>
+              <option value=" romeu e julieta">Pizza Romeu e Julieta</option>
+              <option value="confetti">Pizza Confetti</option>
+            </select>
+            <input  class="pedido" type="text" id="Quantipizzadoce"  maxlength="2" placeholder="Digite a quantidade" onKeyUp="pizzadoce()">
+            <input  class="pedido" type="text" id="Valorpizzadoce" value="R$ 35,00" disabled="disabled">
+            <input  class="pedido" type="text" id="Totalpizza" placeholder="R$"></br>                
+            <label>Sobremesas:</label>
+            <select>
+              <option>-</option>
+              <option value="Bolo">Bolo de Chocolate</option>
+              <option value="Petti">Petti gateau</option>
+              <option value="Pudim">Pudim</option>
+              <option value="Sovetes">Sorvetes</option>
+            </select>
+            <input  class="pedido" type="text" id="QuantiSobremesa"  maxlength="2" placeholder="Digite a quantidade" onKeyUp="sobremesa()">
+            <input  class="pedido" type="text" id="Valorsobremesa"  value="R$ 20,00" disabled="disabled">
+            <input  class="pedido" type="text" id="Totalsobremesa" placeholder="R$"></br>  
+            <label>Total da compra:</label>
+          <input type="text" id="totalcompra" placeholder="Total">          
+          </fieldset>
+        </form>
+      </section>
+      <input type="submit" value="Finalizar Compra" class="finalizar" onclick="return validaCampos();" />
+
+      <footer class="footer">
+          <p>Pizzalangelo.</p>
+          <small class="creditos">Criado por <a href="https://www.facebook.com/kaike.souto">Kaike Souto</a>.</small>
+      </footer>
+    </div>
+ </body>
+</html>

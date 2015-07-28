@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="pt-br">
   <head>
     <title>Pizzalangelo</title>
     <meta charset="utf-8"/>
@@ -37,72 +37,73 @@
             <legend id="usuario">Indentificação e Endenreço</legend>
             <table>
               <tr>
-                <td><label for="nome">Nome do Cliente:</label><span id="erro_nome"></span></td>
-                <td><input name="nome" id="nome" type="text" size="20" maxlength="20" placeholder="Nome Completo"></td>
+                <td><label for="nome">Nome do Cliente:<span id="erro_nome"></span></label></td>
+                <td><input name="nome" id="nome" type="text" size="20" maxlength="20" placeholder="Nome Completo"  required /></td>
               </tr>              
               <tr>
-                <td><label for="tel">Telefone:</label><span id="erro_tel"></span> </td>
-                <td><input type="text" name="tel" id="tel" size="20" maxlength="10"  placeholder="Telefone" ></td>
+                <td><label for="tel">Telefone:</label></td>
+                <td><input type="text" name="tel" id="tel" size="20" maxlength="10"  placeholder="Telefone"  onkeypress="return OnlyNumber(event);" required></td>
               </tr>
               <tr>
-                <td><label for="Rua">Nome da Rua:</label><span id="erro_rua"></span></td>
-                <td><input name="rua" id="rua" type="text" size="20" maxlength="20" placeholder="Rua"></td>
+                <td><label for="Rua">Nome da Rua:</label></td>
+                <td><input name="rua" id="rua" type="text" size="20" maxlength="20" placeholder="Rua" required></td>
               <tr>
               <tr>
-                <td><label for="Rua">Bairro:</label><span id="erro_bairro"></span></td>
-                <td><input name="bairro" id="bairro" type="text" size="15" maxlength="20" placeholder="Bairro"></td>
+                <td><label for="bairro">Bairro:</label></td>
+                <td><input name="bairro" id="bairro" type="text" size="15" maxlength="20" placeholder="Bairro"required></td>
               <tr>
             </table>
           </fieldset>
           <fieldset>
             <legend>Dados do cartão</legend>
-            <label>Digite o Número do Cartão:<span id="erro_cartao"></span></label>
-            <input type="text" name="numeroCartao" id="cartao" placeholder="xxxx xxxx xxxx xxxx" maxlength="12"><br/><br/>
-            <label>Data de validade do cartão<span id="erro_valcartao"></span></label>
-            <input type="text" name="validadecartão" id="valcartao" placeholder="Mes/Ano" maxlength="5"><br/><br/>
+            <label>Digite o Número do Cartão:</label>
+            <input type="text" name="numeroCartao" id="cartao" placeholder="xxxx xxxx xxxx xxxx" maxlength="12"  onkeypress="return OnlyNumber(event)"; required><br/><br/>
+            <label>Data de validade do cartão:</label>
+            <input type="text" name="validadecartão" id="valcartao" placeholder="Mes/Ano" maxlength="5"  onkeypress="return OnlyNumber(event)";><br/><br/>
           </fieldset>
           <fieldset> 
             <legend>Faça seu pedido</legend>
             <label>Pizzas salgadas:</label>
-            <select>
+            <select id="compra">
               <option>-</option>
               <option value="Mussarella">Mussarella</option>
               <option value="Calabresa">Calabresa</option>
               <option value="frango">Frango com Catupiry</option>
               <option value="portuguesa">Portuguesa</option>
             </select>
-            <input  class="pedido" type="text"  id="pizzasalgada" maxlength="2" placeholder="Digite a quantidade"onKeyUp="pizzasalg()">
+            <input  class="pedido" type="text"  id="pizzasalgada" maxlength="2" placeholder="Digite a quantidade"onKeyUp="pizzasalg()" onkeypress="return OnlyNumber(event)";>
             <input  class="pedido" type="text"  id="valorpizzasalgada" value="R$ 30,00" disabled="disabled">
             <input  class="pedido" type="text" id="totalpizza" placeholder="R$"></br>
 
             <label>Pizzas doces:</label>
-            <select name="sabores">
+            <select id="compra1">
               <option>-</option>
               <option value="brigadeiro">Pizza Brigadeiro</option>
               <option value="chocolate branco">Pizza Chocolate Branco</option>
               <option value=" romeu e julieta">Pizza Romeu e Julieta</option>
               <option value="confetti">Pizza Confetti</option>
             </select>
-            <input  class="pedido" type="text" id="Quantipizzadoce"  maxlength="2" placeholder="Digite a quantidade" onKeyUp="pizzadoce()">
+            <input  class="pedido" type="text" id="Quantipizzadoce"  maxlength="2" placeholder="Digite a quantidade" onKeyUp="pizzadoce()" onkeypress="return OnlyNumber(event)";>
             <input  class="pedido" type="text" id="Valorpizzadoce" value="R$ 35,00" disabled="disabled">
             <input  class="pedido" type="text" id="Totalpizza" placeholder="R$"></br>                
             <label>Sobremesas:</label>
-            <select>
+            <select id="compra2">
               <option>-</option>
               <option value="Bolo">Bolo de Chocolate</option>
               <option value="Petti">Petti gateau</option>
               <option value="Pudim">Pudim</option>
               <option value="Sovetes">Sorvetes</option>
             </select>
-            <input  class="pedido" type="text" id="QuantiSobremesa"  maxlength="2" placeholder="Digite a quantidade" onKeyUp="sobremesa()">
+            <input  class="pedido" type="text" id="QuantiSobremesa"  maxlength="2" placeholder="Digite a quantidade" onKeyUp="sobremesa()" onkeypress="return OnlyNumber(event)";>
             <input  class="pedido" type="text" id="Valorsobremesa"  value="R$ 20,00" disabled="disabled">
             <input  class="pedido" type="text" id="Totalsobremesa" placeholder="R$"></br>  
             <label>Total da compra:</label>
-          <input type="text" id="totalcompra" placeholder="Total">          
+          <input type="text" id="totalcompra" placeholder="Total" onmouseout="totalGeral()">          
           </fieldset>
+          <button type="submit" value="Finalizar Compra" class="finalizar" onclick="finalizaCompra();">Finalizar Compra</button>
         </form>
       </section>
-      <input type="submit" value="Finalizar Compra" class="finalizar" onclick="return validaCampos();" />
+      
 
       <footer class="footer">
           <p>Pizzalangelo.</p>

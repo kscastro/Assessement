@@ -139,7 +139,7 @@ legend {
     color: #888888;
     font-size: 1.85em;
 }
-input, textarea{
+input,button, textarea{
     font-family: 'agency fb', sans-serif;
     font-size: 1.25em;
     width: 100%;

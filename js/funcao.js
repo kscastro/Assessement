@@ -1,104 +1,3 @@
-function validaCampos(){
-		if(!validateNome()) return false;
-
-		if(!validateTel()) return false;
-
-		if(!validateRua()) return false;
-
-		if(!validateBairro()) return false;
-
-		if(!validateCartao()) return false;
-
-		if(!validateValCartao()) return false;
-
-
-		
-	}
-
-
-	function validateNome(){
-		var nome = document.getElementById("nome").value;
-
-		if(nome == ""){
-				alert("Por favor preencha o seu nome");
-				document.getElementById("erro_nome");
-				document.getElementById("nome").focus();
-		}else{
-				document.getElementById("erro_nome").innerHTML="";
-				return true;
-		}
-	}
-	
-	function validateTel(){
-		var tel = document.getElementById("tel").value;
-
-		if (tel ==""){
-    			alert('Por favor preencha o telefone.');
-    			document.getElementById("erro_tel");
-    			document.getElementById("tel").focus();
-    	}else{
-    		document.getElementById("erro_tel").innerHTML="";
-    		return true;
-
-    	}
-	}
-	
-
-	function validateRua(){
-		var rua = document.getElementById("rua").value;
-
-		if(rua == ""){
-			alert("Por favor preencha o nome da sua Rua.");
-			document.getElementById("erro_rua");
-			document.getElementById("rua").focus();
-
-		}else{
-			document.getElementById("erro_rua").InnerHtml="";
-			return true;
-		}
-	}
-
-	function validateBairro(){
-		var bairro = document.getElementById("bairro").value;
-
-		if(bairro == ""){
-			alert("Por favor preencha o nome do seu bairro.");
-			document.getElementById("erro_bairro");
-			document.getElementById("bairro").focus();
-
-		}else{
-			document.getElementById("erro_bairro").InnerHtml="";
-			return true;
-		}
-	}
- 
- 	function validateCartao(){
-		var cartao = document.getElementById("cartao").value;
-
-		if(cartao == ""){
-			alert("Por favor preencha o numero do seu cartao corretamente.");
-			document.getElementById("erro_cartao");
-			document.getElementById("cartao").focus();
-
-		}else{
-			document.getElementById("erro_cartao").InnerHtml="";
-			return true;
-		}
-	}
-
-	function validateValCartao(){
-		var valcartao = document.getElementById("valcartao").value;
-
-		if(valcartao == ""){
-			alert("Por favor preencha a data de expiração do seu cartão");
-			document.getElementById("erro_valcartao");
-			document.getElementById("valcartao").focus();
-
-		}else{
-			document.getElementById("erro_valcartao").InnerHtml="";
-			return true;
-		}
-	}
 
 	function pizzasalg() {
     var quant = Number(document.getElementById('pizzasalgada').value);
@@ -128,7 +27,42 @@ function validaCampos(){
     document.getElementById('pag').Totalsobremesa.value = "R$ " + (total.toFixed(2));
 }
 
+	function totalGeral() {
+		var pizzaSalgadaTotal = Number(document.getElementById('totalpizza').value.replace("R$ ", "").replace(',','.'));
+		var pizzaDoceTotal = Number(document.getElementById('Totalpizza').value.replace("R$ ", "").replace(',','.'));
+		var sobremesaTotal = Number(document.getElementById('Totalsobremesa').value.replace("R$ ", "").replace(',','.'));
+		var totalGeral = pizzaSalgadaTotal + pizzaDoceTotal + sobremesaTotal;
+		console.log(totalGeral);
+		document.getElementById('pag').totalcompra.value = "R$ "+ (totalGeral.toFixed(2));
+	}
+
 	
+function OnlyNumber(e){
+  var tecla=(window.event)?event.keyCode:e.which;
+  if((tecla>47 && tecla<58)) return true;
+  else{
+  if (tecla==8 || tecla==0) return true;
+  else  return false;
+}
+}
 
 
+function finalizaCompra(){
+  t_pizza = document.getElementById("compra").value;
+  qtd_pizza = document.getElementById("pizzasalgada").value;
+  total_pizza = document.getElementById("totalpizza").value;
 
+  t_pizza1 = document.getElementById("compra1").value;
+  qtd_pizza1 = document.getElementById("Quantipizzadoce").value;
+  total_pizza1 = document.getElementById("Totalpizza").value;
+
+   t_pizza2 = document.getElementById("compra2").value;
+  qtd_pizza2 = document.getElementById("QuantiSobremesa").value;
+  total_pizza2 = document.getElementById("Totalsobremesa").value;
+
+  total_compras = document.getElementById("totalcompra").value;
+
+  alert("Compra realizada com sucesso! \n --------------------------------- \n"+qtd_pizza+" Pizza de "+t_pizza+" por "+total_pizza+"\n"+qtd_pizza1+" Pizza de "+t_pizza1+" por "+total_pizza1+"\n" +qtd_pizza2+" Sobremesa "+t_pizza2+" de "+total_pizza2+"\n --------------------------------- \n  Total: "+total_compras);
+}
+
+ 
